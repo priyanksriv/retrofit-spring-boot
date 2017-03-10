@@ -1,0 +1,51 @@
+allprojects {
+    group = 'retrofit-spring-boot'
+
+	apply plugin: 'idea'
+
+    task wrapper(type: Wrapper) {
+        gradleVersion = '3.2'
+    }
+}
+
+buildscript {
+	ext {
+		springBootVersion = '1.5.2.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+		maven { 
+			url 'http://repo.spring.io/plugins-release' 
+		}
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath("org.springframework.build.gradle:propdeps-plugin:0.0.7")
+	}
+}
+
+subprojects {
+	apply plugin: 'java'
+    apply plugin: 'spring-boot'
+    apply plugin: 'propdeps'
+    apply plugin: 'propdeps-idea'
+
+    sourceCompatibility = 1.8
+
+    dependencies {
+		compile "org.springframework.boot:spring-boot-starter"
+		optional "org.springframework.boot:spring-boot-configuration-processor"
+		
+		compile "com.squareup.okhttp3:okhttp:3.6.0"
+		compile "com.squareup.retrofit2:retrofit:2.2.0"
+		optional "com.squareup.retrofit2:converter-jackson:2.2.0"
+
+		testCompile "org.springframework.boot:spring-boot-starter-test"
+    }
+    
+    jar {
+		bootRepackage.enabled = false
+	}
+	
+	compileJava.dependsOn(processResources)
+}
