@@ -1,0 +1,5 @@
+rootProject.name = 'retrofit-spring-boot'
+
+include 'retrofit-springboot-autoconfigure'
+include 'retrofit-springboot-demo'
+
