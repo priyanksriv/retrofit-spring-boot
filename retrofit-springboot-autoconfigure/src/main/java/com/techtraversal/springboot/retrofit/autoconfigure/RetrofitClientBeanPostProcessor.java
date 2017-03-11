@@ -51,8 +51,8 @@ class RetrofitClientBeanPostProcessor
      * @param registry bean definition registry
      */
     public static void register(BeanDefinitionRegistry registry,
-                                Set<String> packageNames)
-    {
+                                Set<String> packageNames) {
+
         if (!registry.containsBeanDefinition(BEAN_NAME))  {
             GenericBeanDefinition beanDefinition = new GenericBeanDefinition();
             beanDefinition.setBeanClass(RetrofitClientBeanPostProcessor.class);
@@ -73,8 +73,7 @@ class RetrofitClientBeanPostProcessor
      * @see BeanFactoryAware#setBeanFactory(BeanFactory)
      */
     @Override
-    public void setBeanFactory(BeanFactory beanFactory) throws BeansException
-    {
+    public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
         this.beanFactory = beanFactory;
     }
 
@@ -93,8 +92,8 @@ class RetrofitClientBeanPostProcessor
      */
     @Override
     public Object postProcessBeforeInstantiation(Class<?> beanClass, String beanName)
-            throws BeansException
-    {
+            throws BeansException {
+
         logger.trace("Bean class {}, Bean name: {}", beanClass, beanName);
         if (packageNames.contains(beanClass.getPackage().getName()) &&
                 beanClass.isAnnotationPresent(RetrofitClient.class))
@@ -111,8 +110,7 @@ class RetrofitClientBeanPostProcessor
      * Generic implementation for creating implementation of Retrofit clients.
      * @see Retrofit#create(Class)
      */
-    private <T> T createClientInstance(Class<T> beanClass, Retrofit retrofit)
-    {
+    private <T> T createClientInstance(Class<T> beanClass, Retrofit retrofit) {
         logger.trace("Invoking retrofit#create on bean {}", beanClass);
         return retrofit.create(beanClass);
     }

@@ -19,8 +19,8 @@ import org.springframework.context.annotation.Import;
 @Retention(RetentionPolicy.RUNTIME)
 @Inherited
 @Import(RetrofitClientsRegistrar.class)
-public @interface RetrofitClientsScan
-{
+public @interface RetrofitClientsScan {
+
     /**
      * Base packages to scan for annotated entities.
      * @return the base packages to scan

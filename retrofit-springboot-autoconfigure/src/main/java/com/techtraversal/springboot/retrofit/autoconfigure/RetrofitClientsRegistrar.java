@@ -48,8 +48,8 @@ public class RetrofitClientsRegistrar implements ImportBeanDefinitionRegistrar {
      */
     @Override
     public void registerBeanDefinitions(AnnotationMetadata aMetadata,
-                                        BeanDefinitionRegistry registry)
-    {
+                                        BeanDefinitionRegistry registry) {
+
         Set<String> packagesToScan = packagesToScan(aMetadata);
         register(clientBeanDefinitions(packagesToScan), registry);
 
@@ -80,8 +80,8 @@ public class RetrofitClientsRegistrar implements ImportBeanDefinitionRegistrar {
 
 
     private void register(Set<BeanDefinition> beanDefinitions,
-                          BeanDefinitionRegistry registry)
-    {
+                          BeanDefinitionRegistry registry) {
+
         BeanNameGenerator bng = new DefaultBeanNameGenerator();
         for (BeanDefinition candidate : beanDefinitions) {
             String beanName = bng.generateBeanName(candidate, registry);
@@ -95,8 +95,8 @@ public class RetrofitClientsRegistrar implements ImportBeanDefinitionRegistrar {
     /*
      * Gets a list of base packages to scout for interfaces from the annotation metadata.
      */
-    private Set<String> packagesToScan(AnnotationMetadata metadata)
-    {
+    private Set<String> packagesToScan(AnnotationMetadata metadata) {
+
         AnnotationAttributes attributes = AnnotationAttributes.fromMap(metadata
                 .getAnnotationAttributes(RetrofitClientsScan.class.getName()));
 
