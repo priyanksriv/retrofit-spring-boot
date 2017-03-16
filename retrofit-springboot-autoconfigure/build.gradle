@@ -1,6 +1,10 @@
-apply plugin: "groovy"
+apply plugin: 'groovy'
 
 dependencies {
+    compile('com.squareup.okhttp3:okhttp:3.6.0')
+    compile('com.squareup.retrofit2:retrofit:2.2.0')
+    optional('com.squareup.retrofit2:converter-jackson:2.2.0')
+
     testCompile('org.codehaus.groovy:groovy-all:2.4.7')
     testCompile('org.spockframework:spock-core:1.1-groovy-2.4-rc-3')
 }
